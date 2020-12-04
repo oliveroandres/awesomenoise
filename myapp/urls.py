@@ -5,7 +5,7 @@ from myapp.views import (ArtistListView, ArtistDetailView)
 from myapp.views import (AlbumeListView, AlbumeDetailView)
 from myapp.views import (GenreListView, GenreDetailView)
 from myapp.views import (Video_ClipListView, Video_ClipDetailView)
-from myapp.views import (Search_ResultListView)
+from myapp.views import (Search_Albume_ResultListView, Search_Artist_ResultListView, Search_Video_Clip_ResultListView)
 
 
 
@@ -25,5 +25,7 @@ urlpatterns = [
     path('video-clips/',Video_ClipListView.as_view(),name = 'video-clips'),
     path('video-clip/<slug:slug>/', Video_ClipDetailView.as_view(),name = 'video-clip'),
     #Search_Result
-    path('search-result/',Search_ResultListView.as_view(),name = 'search-result'),
+    path('search-albume-result/',Search_Albume_ResultListView.as_view(),name = 'search-albume-result'),
+    path('search-artist-result/',Search_Artist_ResultListView.as_view(),name = 'search-artist-result'),
+    path('search-video-clip-result/',Search_Video_Clip_ResultListView.as_view(),name = 'search-video-clip-result'),
 ]

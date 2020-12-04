@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block principal %}
+<div class="container">
+  <br>
+<center><h1>Video-Clip Search Result:</h1></center>
+<hr>
+    <div class="row">
+      {% for Video_Clip in object_list  %}
+      <div class="col-lg-3 col-md-3 mb-3">
+        <div class="card h-100">
+        <p>
+          <center><a href="#"><img src="{{ Video_Clip.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="#">{{ Video_Clip.name }}</a>
+            </h5>
+            <h6>
+              <a href="#">{{ Video_Clip.artist }}</a>
+            </h6>
+            <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Video_Clip.video_Format }}</a></p>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'video-clip' Video_Clip.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
+            <a href="#"></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    {% endblock %}

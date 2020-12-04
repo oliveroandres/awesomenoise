@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block principal %}
+<div class="container">
+  <br>
+<center><h1>Albumes Search Result:</h1></center>
+<hr>
+    <div class="row">
+      {% for Artist in object_list  %}
+      <div class="col-lg-3 col-md-3 mb-3">
+        <div class="card h-100">
+        <p>
+          <center><a href="#"><img src="{{ Artist.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="#">{{ Artist.name }}</a>
+            </h5>
+            <h6>
+              <a href="#">{{ Artist.artist }}</a>
+            </h6>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'artist' Artist.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
+            <a href="#"></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    {% endblock %}

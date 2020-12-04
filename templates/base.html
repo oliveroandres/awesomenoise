@@ -37,9 +37,18 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="{% url 'search-result' %}" method="GET">
+      
+      <form class="form-inline my-2 my-lg-0" action="{% url 'search-artist-result' %}" method="GET">
+        <select class="browser-default custom-select" id="test" searchable="Search here..">
+          <option value="" disabled selected>Option</option>
+          <option value="1">Artist</option>
+          <option value="2">Albume</option>
+          <option value="3">Vdeo-C</option>
+          
+      </select>
         <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        
       </form>
     </div>
   </nav>

@@ -13,12 +13,12 @@ class Home(ListView):
 #Artists 
 class ArtistListView(ListView):
     model = Artist
+    
     template_name = 'myapp/artist_list.html'
     paginate_by = 12
-   
-    
 
 class ArtistDetailView(DetailView):
+    model =Albume
     model = Artist    
     
 
@@ -51,9 +51,9 @@ class Video_ClipDetailView(DetailView):
 
 #Search Function
 
-class Search_ResultListView(ListView):
+class Search_Albume_ResultListView(ListView):
     model = Albume
-    template_name = 'myapp/search_result.html'
+    template_name = 'myapp/search_albume_result.html'
 
     def get_queryset(self): # new
         query = self.request.GET.get('q')
@@ -62,4 +62,25 @@ class Search_ResultListView(ListView):
         )
         return object_list
 
-        
+
+class Search_Artist_ResultListView(ListView):
+    model = Artist
+    template_name = 'myapp/search_artist_result.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Artist.objects.filter(
+            Q(name__icontains=query)
+        )    
+        return object_list
+
+class Search_Video_Clip_ResultListView(ListView):
+    model = Video_Clip       
+    template_name = 'myapp/search_video_clip_result.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Video_Clip.objects.filter(
+            Q(name__icontains=query)
+        )    
+        return object_list
