@@ -12,11 +12,11 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><a href="#">{{ object.artist }}</a> - {{ object.name }}</h5>
+        <h5 class="card-title"><a href="{% url 'artist-filter' object.artist.slug %}">{{ object.artist }}</a> - {{ object.name }}</h5>
         <p class="card-text">{{ object.description }}.</p>
-        <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ object.audio_Format }}</a></p>
-        <p class="card-text"><medium class="text-muted">Genre:</medium><a href="#"> {{ object.genre }}</a></p>
-        <p class="card-text"><small class="text-muted">Published On - </small><small class="text"><a href="#">{{ object.published }}</a></small></p>
+        <h6><p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ object.audio_Format }}</a></p></h6>
+        <h6><p class="card-text"><medium class="text-muted">Genre:</medium><a href="{% url 'genre-filter' object.genre.slug %}"> {{ object.genre }}</a></p></h6>
+        <h6><p class="card-text"><small class="text-muted">Published On - </small><small class="text"><a href="#">{{ object.published }}</a></small></p></h6>
 
         <button type="button" class="btn btn-success btn-lg btn-block">Download</button>
         

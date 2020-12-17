@@ -14,12 +14,12 @@
           <center><a href="#"><img src="{{ Artist.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">{{ Artist.name }}</a>
+              <h5>{{ Artist.name }}</h5>
             </h5>
           </div>
           <div class="card-footer">
-            <a href="{% url 'artist' Artist.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a></td>
-            <a href="#"></a>
+            <a href="{% url 'artist-filter' Artist.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a></td>
+            
           </div>
         </div>
       </div>

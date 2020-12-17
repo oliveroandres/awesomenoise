@@ -2,7 +2,7 @@
 {% load static %}
 {% block principal %}
 <p>
-<center><h1>Video Clips</h1></center>
+<center><h1>Video-Clips</h1></center>
 <hr>
 <div class="container">
     <div class="row">
@@ -13,17 +13,16 @@
           <center><a href="#"><img src="{{ Video_Clip.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
           <div class="card-body">
             <h5 class="card-title">
-              <a href="#">{{ Video_Clip.name }}</a>
+              <h5>{{ Video_Clip.name }}</h5>
             </h5>
             <h6>
-              <a href="#">{{ Video_Clip.artist }}</a>
+              <a href="{% url 'artist-filter' Video_Clip.artist.slug %}">{{ Video_Clip.artist }}</a>
             </h6>
-            <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Video_Clip.video_Format }}</a></p>
-            
+            <h6><p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Video_Clip.video_Format }}</a></p></h6>
+            <h6><p class="card-text"><medium class="text-muted">Genre:</medium><a href="{% url 'genre-filter' Video_Clip.genre.slug %}"> {{ Video_Clip.genre }}</a></p></h6>
           </div>
           <div class="card-footer">
             <a href="{% url 'video-clip' Video_Clip.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
-            <a href="#"></a>
           </div>
         </div>
       </div>

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block principal %}
+<div class="container">
+<hr>
+<div class="card mb-12" style="max-width: 1150px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ artist.image.url }}" alt="..." height="50px" class="img-thumbnail">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">{{ artist.name }}</h4>
+        <p class="card-text">{{ artist.description }}.</p>
+        <img src="{% static 'images/itunes.png' %}" class="inline" alt="..." height="60px" width="60px" class="img-thumbnail">
+        <img src="{% static 'images/apple music.png' %}" class="inline" alt="..." height="80px" width="80px" class="img-thumbnail">
+        <hr>
+        <button type="button" class="btn btn-primary btn-lg btn-block">< Empty ></button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  {% for Albume in object_list  %}
+  <div class="col-lg-3 col-md-3 mb-3">
+    <div class="card h-100">
+    <p>
+      <center><a href="#"><img src="{{ Albume.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="#">{{ Albume.name }}</a>
+        </h5>
+        <h6>
+          <a href="#">{{ Albume.artist }}</a>
+        </h6>
+       <h6>
+        <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Albume.audio_Format }}</a></p>
+       </h6>
+        <h6>
+          <p class="card-text"><medium class="text-muted">Genre:</medium><a href="{% url 'genre-filter' Albume.genre.slug %}"> {{ Albume.genre }}</a></p>
+        </h6>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'albume' Albume.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
+        <a href="#"></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+
+{% endblock %}

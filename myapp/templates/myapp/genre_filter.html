@@ -3,7 +3,7 @@
 {% block principal %}
 <div class="container">
   <br>
-<center><h1>Albumes</h1></center>
+<center><h1>Genre - ({{ genre.name }})</h1></center>
 
 <hr>
     <div class="row">
@@ -14,7 +14,7 @@
           <center><a href="#"><img src="{{ Albume.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
           <div class="card-body">
             <h5 class="card-title">
-              <h5>{{ Albume.name }}</h5>
+              <a href="#">{{ Albume.name }}</a>
             </h5>
             <h6>
               <a href="{% url 'artist-filter' Albume.artist.slug %}">{{ Albume.artist }}</a>
@@ -23,8 +23,11 @@
               <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Albume.audio_Format }}</a></p>
             </h6>
             <h6>
-              <p class="card-text"><medium class="text-muted">Genre:</medium><a href="{% url 'genre-filter' Albume.genre.slug %}"> {{ Albume.genre }}</a></p>
+              <p class="card-text"><medium class="text-muted">Genre:</medium><a href="#"> {{ Albume.genre }}</a></p>
             </h6>
+            
+
+            
           </div>
           <div class="card-footer">
             <a href="{% url 'albume' Albume.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>

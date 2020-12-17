@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
@@ -9,17 +9,24 @@ from .models import Artist, Albume, Genre, Video_Clip
 class Home(ListView):
     model = Albume
     template_name = 'myapp/home.html'
-    paginate_by = 12
+    paginate_by = 6
 #Artists 
 class ArtistListView(ListView):
     model = Artist
-    
     template_name = 'myapp/artist_list.html'
     paginate_by = 12
 
-class ArtistDetailView(DetailView):
-    model =Albume
+class Artist_FilterListView(ListView):
     model = Artist    
+    template_name = 'myapp/artist_filter.html'
+    def get_queryset(self):
+        self.artist = get_object_or_404(Artist, slug=self.kwargs['slug'])
+        return Albume.objects.filter(artist=self.artist)
+
+    def get_context_data(self, **kwargs):
+        context = super(Artist_FilterListView, self).get_context_data(**kwargs)
+        context ['artist'] = self.artist
+        return context  
     
 
 #Albumes    
@@ -37,14 +44,27 @@ class GenreListView(ListView):
     template_name = 'myapp/genre_list.html'   
     paginate_by = 12
 
-class GenreDetailView(DetailView):  
-    model = Genre
+
+class Genre_FilterListView(ListView):
+    model = Albume
+    template_name = 'myapp/genre_filter.html'
+    def get_queryset(self):
+        self.genre = get_object_or_404(Genre, slug=self.kwargs['slug'])
+        return Albume.objects.filter(genre=self.genre)
+
+    def get_context_data(self, **kwargs):
+        context = super(Genre_FilterListView, self).get_context_data(**kwargs)
+        context ['genre'] = self.genre
+        return context    
+
 
 #Video Clips
 class Video_ClipListView(ListView):
     model = Video_Clip
     template_name = 'myapp/video_clip_list.html'        
     paginate_by = 12
+
+    
 
 class Video_ClipDetailView(DetailView):
     model = Video_Clip 

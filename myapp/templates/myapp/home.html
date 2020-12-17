@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block principal %}
+
+<title>{% block title %} Home {% endblock title %}</title>
+
 <div class="container">
 
     <div class="row">
@@ -54,31 +57,27 @@
               <center><a href="#"><img src="{{ Albume.image.url }}" alt="" height="200p" class="container-fluid"></a></center>
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="#">{{ Albume.name }}</a>
+                  <h5>{{ Albume.name }}</h5>
                 </h5>
                 <h6>
-                  <a href="#">{{ Albume.artist }}</a>
+                  <a href="{% url 'artist-filter' Albume.artist.slug %}">{{ Albume.artist }}</a>
                 </h6>
-                <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Albume.audio_Format }}</a></p>
+                <h6>
+                  <p class="card-text"><medium class="text-muted">Format:</medium><a href="#"> {{ Albume.audio_Format }}</a></p>
+                </h6>
+                <h6>
+                  <p class="card-text"><medium class="text-muted">Genre:</medium><a href="{% url 'genre-filter' Albume.genre.slug %}"> {{ Albume.genre }}</a></p>
+                </h6>
+                
               </div>
               <div class="card-footer">
                 <a href="{% url 'albume' Albume.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
               </div>
             </div>   
           </div>
-
           {% endfor %}
         </div>
-
-
   </div>
-  <!-- /.container -->
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>
 {% endblock%}

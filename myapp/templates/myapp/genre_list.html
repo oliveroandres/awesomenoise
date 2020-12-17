@@ -13,23 +13,14 @@
           
           <div class="card-body">
             <h4 class="card-title">
-              <center><a href="#">{{ Genre.name }}</a></center>
-            </h4>
-            
-              
-            
-          </div>
-          <div class="card-footer">
-            <a href="{% url 'genre' Genre.slug %}" id="botones" class="btn btn-outline-primary" type="submit">See more</a>
-            <a href="#"></a>
+              <center><a href="{% url 'genre-filter' Genre.slug %}">{{ Genre.name }}</a></center>
+            </h4>     
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
     </div>
-
-
     <div class="container">
       <nav aria-label="Page navigation example">
       {% if is_paginated %}
